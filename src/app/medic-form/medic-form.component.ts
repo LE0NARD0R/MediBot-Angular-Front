@@ -21,6 +21,7 @@ export class MedicFormComponent {
     'Psiquiatría',
     'Odontología',
     'Endocrinología',
+    'Ortopedia',
   ];
 
   model = new Medic('', this.specialties[0]);

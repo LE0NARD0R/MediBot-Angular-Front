@@ -1,0 +1,22 @@
+<div class="header">
+  <div class="overlay text-white">
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Specialty</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let medic of medics; index as i">
+            <td>{{ i + 1 }}</td>
+            <td>{{ medic.name }}</td>
+            <td>{{ medic.specialty }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

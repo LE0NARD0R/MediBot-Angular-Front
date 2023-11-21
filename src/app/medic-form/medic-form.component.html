@@ -1,89 +1,89 @@
-<div class="container">
-  <div [hidden]="submitted"></div>
-  <h1>Medic Form</h1>
-  <form (ngSubmit)="getMedicData(medicForm.value)" #medicForm="ngForm">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="name"
-        required
-        [(ngModel)]="model.name"
-        name="name"
-        #name="ngModel"
-      />
-      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-        Name is required
+<div class="header">
+  <div class="overlay text-white">
+    <div [hidden]="submitted"></div>
+    <h1 class="display-2 font-weight-bold my-3">Medic Form</h1> 
+    <form (ngSubmit)="getMedicData(medicForm.value)" #medicForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="model.name"
+          name="name"
+          #name="ngModel"
+        />
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Name is required
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="specialty">Medic Specialty:</label>
-      <select
-        class="form-control"
-        id="specialty"
-        required
-        [(ngModel)]="model.specialty"
-        name="specialty"
-        #specialty="ngModel"
-      >
-        <option *ngFor="let spec of specialties" [value]="spec">
-          {{ spec }}
-        </option>
-      </select>
-      <div
-        [hidden]="specialty.valid || specialty.pristine"
-        class="alert alert-danger"
-      >
-        Especialty is required
+      <div class="form-group">
+        <label for="specialty">Medic Specialty:</label>
+        <select
+          class="form-control"
+          id="specialty"
+          required
+          [(ngModel)]="model.specialty"
+          name="specialty"
+          #specialty="ngModel"
+        >
+          <option *ngFor="let spec of specialties" [value]="spec">
+            {{ spec }}
+          </option>
+        </select>
+        <div
+          [hidden]="specialty.valid || specialty.pristine"
+          class="alert alert-danger"
+        >
+          Especialty is required
+        </div>
       </div>
-    </div>
 
-    <button
-      type="submit"
-      class="btn btn-success"
-      [disabled]="!medicForm.form.valid"
-    >
-      Submit
-    </button>
-  </form>
+      <button
+        type="submit"
+        class="btn btn-info"
+        [disabled]="!medicForm.form.valid"
+      >
+        Submit
+      </button>
+    </form>
 
-  <div [hidden]="!submitted">
-    <h2>The information that will be storaged is:</h2>
-    <div class="row">
-      <div class="col-xs-3">Name</div>
-      <div class="col-xs-9">{{ model.name }}</div>
-    </div>
-    <div class="row">
+    <div [hidden]="!submitted">
+      <h2>The information that will be storaged is:</h2>
+      <div class="row">
+        <div class="col-xs-3">Name</div>
+        <div class="col-xs-9">{{ model.name }}</div>
+      </div>
+      <div class="row">
         <div class="col-xs-3">Code</div>
         <div class="col-xs-9">{{ code }}</div>
       </div>
-    <div class="row">
-      <div class="col-xs-3">Specialty</div>
-      <div class="col-xs-9">{{ model.specialty }}</div>
+      <div class="row">
+        <div class="col-xs-3">Specialty</div>
+        <div class="col-xs-9">{{ model.specialty }}</div>
+      </div>
+      <br />
+      <button
+        type="button"
+        class="btn btn-info"
+        (click)="newMedic(); fillData()"
+      >
+        Okay
+      </button>
     </div>
-    <br />
-    <button type="button" class="btn btn-primary" (click)="newMedic(); fillData();">
-      Okay
-    </button>
-  </div>
-
-  <div class="container">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">nombre</th>
-          <th scope="col">Especialidad</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let medic of medics; index as i">
-          <td>{{ i+1 }}</td>
-          <td>{{ medic.name }}</td>
-          <td>{{ medic.specialty }}</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </div>
+
+<!-- core  -->
+<script src="../../assets/vendors/jquery/jquery-3.4.1.js"></script>
+<script src="../../assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+
+<!-- bootstrap affix -->
+<script src="../../assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+<!-- wow.js -->
+<script src="../../assets/vendors/wow/wow.js"></script>
+
+<!-- FoodHut js -->
+<script src="../../assets/js/foodhut.js"></script>
